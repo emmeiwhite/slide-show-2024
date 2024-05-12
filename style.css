@@ -26,6 +26,18 @@
   object-position: center;
 }
 
+/* Show & Hide Slide logic*/
+
+.show-slide {
+  visibility: visible;
+  opacity: 1;
+}
+
+.hide-slide {
+  visibility: hidden;
+  opacity: 0;
+}
+
 /* Custom Arrows */
 .control {
   height: 100vh;
