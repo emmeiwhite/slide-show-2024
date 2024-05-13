@@ -37,10 +37,9 @@ const playCarousalLoop = () => {
 
 /** --- 2. PLAY/PAUSE FUNCTIONALITY --- */
 const playPauseContainer = document.querySelector('.play-pause')
-
-playPauseContainer.addEventListener('click', () => {
-  const icon = playPauseContainer.querySelector('.fas')
-
+const icon = playPauseContainer.querySelector('.fas')
+/** Toggling icon functionality */
+function toggleIcon() {
   if (isSliderMoving) {
     icon.classList.remove('fa-pause')
     icon.classList.add('fa-play')
@@ -55,10 +54,20 @@ playPauseContainer.addEventListener('click', () => {
 
     playCarousalLoop()
   }
-})
+}
+
+playPauseContainer.addEventListener('click', toggleIcon)
+
+function toggleIconOnly() {
+  isSliderMoving = false
+  icon.classList.add('fa-play')
+  icon.classList.remove('fa-pause')
+}
 
 leftArrow.addEventListener('click', () => {
+  toggleIconOnly()
   clearInterval(interval) // Pause automatic looping
+
   currentSlide--
   if (currentSlide < 1) {
     currentSlide = slides.length
@@ -67,7 +76,9 @@ leftArrow.addEventListener('click', () => {
 })
 
 rightArrow.addEventListener('click', () => {
+  toggleIconOnly()
   clearInterval(interval) // Pause automatic looping
+
   currentSlide++
   if (currentSlide > slides.length) {
     currentSlide = 1
