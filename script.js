@@ -2,7 +2,7 @@ let currentSlide = 1,
   isSliding = true,
   interval
 
-// Change Slide Logic
+// B) Change Slide Logic
 const changeSlides = () => {
   const slides = document.querySelectorAll('.slide')
 
@@ -22,16 +22,63 @@ const changeSlides = () => {
   })
 }
 
-// Play Slide show after 3 seconds
+// A1)  Play Slide show after 3 seconds
+/*
 const playPause = () => {
   if (isSliding) {
     interval = setInterval(() => {
-      current++
+      currentSlide++
       changeSlides(currentSlide)
     }, 3000)
+    isSliding = false
   } else {
     clearInterval(interval)
+    isSliding = true
   }
 }
 
+// C) Play-Pause Functionality
+const playPauseBtn = document.querySelector('.play-pause')
+
+playPauseBtn.addEventListener('click', () => {
+  playPause()
+  const playPauseIcon = playPauseBtn.querySelector('i')
+
+  if (isSliding) {
+    playPauseIcon.classList.remove('fa-pause')
+    playPauseIcon.classList.add('fa-play')
+  } else {
+    playPauseIcon.classList.remove('fa-play')
+    playPauseIcon.classList.add('fa-pause')
+  }
+})
+*/
+
+const playPause = () => {
+  interval = setInterval(() => {
+    currentSlide++
+    changeSlides(currentSlide)
+  }, 3000)
+}
+
+// C) Play-Pause Functionality
+const playPauseBtn = document.querySelector('.play-pause')
+
+playPauseBtn.addEventListener('click', () => {
+  const playPauseIcon = playPauseBtn.querySelector('i')
+  console.log(isSliding)
+  if (isSliding) {
+    clearInterval(interval) // Pause the slideshow
+    playPauseIcon.classList.remove('fa-pause')
+    playPauseIcon.classList.add('fa-play')
+  } else {
+    playPause() // resume the slideshow
+    playPauseIcon.classList.remove('fa-play')
+    playPauseIcon.classList.add('fa-pause')
+  }
+  isSliding = !isSliding // toggle the sliding state
+  console.log(isSliding)
+})
+
+// A) For infinite slider (starting from here)
 playPause()
