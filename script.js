@@ -2,7 +2,10 @@ let currentSlide = 1,
   interval,
   isSliderMoving = true
 
+/** ---A)  Getting hold of DOM Elements --- */
 const slides = [...document.querySelectorAll('.slide')]
+const leftArrow = document.querySelector('.left-arrow')
+const rightArrow = document.querySelector('.right-arrow')
 
 const changeSlide = () => {
   slides.forEach(slide => {
@@ -52,6 +55,24 @@ playPauseContainer.addEventListener('click', () => {
 
     playCarousalLoop()
   }
+})
+
+leftArrow.addEventListener('click', () => {
+  clearInterval(interval) // Pause automatic looping
+  currentSlide--
+  if (currentSlide < 1) {
+    currentSlide = slides.length
+  }
+  changeSlide()
+})
+
+rightArrow.addEventListener('click', () => {
+  clearInterval(interval) // Pause automatic looping
+  currentSlide++
+  if (currentSlide > slides.length) {
+    currentSlide = 1
+  }
+  changeSlide()
 })
 
 playCarousalLoop() // This starts the automatic loop
