@@ -32,7 +32,7 @@ const playCarousalLoop = () => {
 
     changeSlide()
     console.log(currentSlide)
-  }, 2000)
+  }, 3000)
 }
 
 /** --- 2. PLAY/PAUSE FUNCTIONALITY --- */

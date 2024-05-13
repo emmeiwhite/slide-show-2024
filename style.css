@@ -9,6 +9,7 @@
   width: 100%;
   height: 100vh;
   overflow: hidden;
+  background-color: #393737;
 }
 
 .slide {
@@ -17,13 +18,14 @@
   position: absolute;
   left: 0;
   top: 0;
+  transition: opacity 1.25s ease-in;
 }
 
 .slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: center top;
 }
 
 /* Show & Hide Slide logic*/
@@ -40,18 +42,20 @@
 
 /* Custom Arrows */
 .control {
-  height: 100vh;
-  width: 15vw;
-  background-color: rgba(92, 94, 97, 0.6);
-  position: absolute;
-  top: 0;
-  z-index: 10;
-  cursor: pointer;
-  padding: 3rem 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+  width: 15vw;
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  cursor: pointer;
+  padding: 2rem;
+  @media (min-width: 768px) {
+    background-color: rgba(92, 94, 97, 0.6);
+  }
 }
 
 .left-arrow {
@@ -63,25 +67,42 @@
 }
 
 .line {
-  width: 3px;
-  height: 10rem;
-  background-color: #ddd5d5;
+  width: 10px;
+  height: 3rem;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  @media (min-width: 768px) {
+    height: 10rem;
+    background-color: #ddd5d5;
+  }
 }
 
 .line-1 {
-  transform: translateY(5px) rotate(20deg);
+  transform: translateY(5px) rotate(30deg);
+  @media (min-width: 768px) {
+    transform: translateY(6px) rotate(20deg);
+  }
 }
 
 .line-2 {
-  transform: translateY(-5px) rotate(-20deg);
+  transform: translateY(-5px) rotate(-30deg);
+  @media (min-width: 768px) {
+    transform: translateY(-6px) rotate(-20deg);
+  }
 }
 
 .line-3 {
-  transform: translateY(5px) rotate(-20deg);
+  transform: translateY(5px) rotate(-30deg);
+  @media (min-width: 768px) {
+    transform: translateY(6px) rotate(-20deg);
+  }
 }
 
 .line-4 {
-  transform: translateY(-5px) rotate(20deg);
+  transform: translateY(-5px) rotate(30deg);
+  @media (min-width: 768px) {
+    transform: translateY(-6px) rotate(20deg);
+  }
 }
 
 /* play/pause */
